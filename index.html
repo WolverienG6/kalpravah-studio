@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="An editorial interior-design studio website." />
+    <title>Kapravah Studio — Interior Design Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="intro-screen" aria-hidden="true">
+      <span class="intro-kicker">INTERIOR DESIGN STUDIO</span>
+      <div class="intro-center">
+        <h1>Kapravah <em>Studio</em></h1>
+        <div class="intro-counter"><span>00</span><sup>%</sup></div>
+        <div class="intro-line"></div>
+        <p>INTENTIONAL HOMES PROMOTING INTENTIONAL LIVING.</p>
+      </div>
+      <span class="intro-location">BANGALORE-BASED · PAN INDIA</span>
+      <span class="intro-year">© 2026</span>
+    </div>
+
+    <button class="whatsapp" type="button" aria-label="Open WhatsApp placeholder" data-placeholder="WhatsApp">
+      <span class="whatsapp-tip">Chat on WhatsApp</span>
+      <span class="whatsapp-pulse"></span>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2a12.6 12.6 0 0 0-10.8 19l-1.8 6.6 6.8-1.8A12.7 12.7 0 1 0 16 3.2Zm0 22.9c-1.8 0-3.5-.5-5-1.4l-.4-.2-4 1 1.1-3.8-.3-.4a10.6 10.6 0 1 1 8.6 4.8Zm5.8-7.8c-.3-.2-1.8-.9-2-1s-.5-.2-.7.2-.8 1-1 1.1-.4.2-.7 0a8.5 8.5 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.2c-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6 0-.2 0-.5-.1-.7l-1-2.3c-.3-.7-.6-.6-.8-.6h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2s1.4 3.7 1.6 4c.2.2 2.8 4.3 6.8 6 1 .4 1.7.7 2.3.9 1 .3 1.8.2 2.5.1.8-.1 1.8-.8 2-1.5.3-.7.3-1.3.2-1.5 0-.2-.2-.3-.5-.4Z"/></svg>
+    </button>
+
+    <header class="site-header" id="home">
+      <a class="brand" href="#home" aria-label="Kapravah Studio home">
+        <span class="brand-mark"><img src="https://kalpravah-ali.vercel.app/logo-cream-transparent.png" alt="" /></span>
+        <span><strong>Kapravah</strong><small>INTERIOR DESIGN STUDIO</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a class="active" href="#home">HOME</a>
+        <a href="#studio">ABOUT</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#services">SERVICES</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+      <button class="header-cta desktop-cta" type="button" data-scroll="contact">START A PROJECT <span>↗</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span><i>Menu</i></button>
+    </header>
+
+    <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-top">
+        <a class="brand" href="#home" data-close-menu aria-label="Kapravah Studio home">
+          <span class="brand-mark"><img src="https://kalpravah-ali.vercel.app/logo-cream-transparent.png" alt="" /></span>
+          <span><strong>Kapravah</strong><small>INTERIOR DESIGN STUDIO</small></span>
+        </a>
+        <button class="drawer-cta" type="button" data-scroll="contact" data-close-menu>START A PROJECT <span>↗</span></button>
+        <button class="menu-close" type="button" aria-label="Close navigation menu">×</button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        <a href="#home" data-close-menu>HOME</a>
+        <a href="#studio" data-close-menu>ABOUT</a>
+        <a href="#projects" data-close-menu>PROJECTS</a>
+        <a href="#services" data-close-menu>SERVICES</a>
+        <a href="#contact" data-close-menu>CONTACT</a>
+      </nav>
+      <button class="mobile-project" type="button" data-scroll="contact" data-close-menu>START A PROJECT</button>
+    </aside>
+
+    <main>
+      <section class="hero section-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow compass">BASED IN BANGALORE · DESIGNING ACROSS INDIA</p>
+          <h1><span>Intentional Homes.</span><span>Promoting</span><span>Intentional Living.</span></h1>
+          <p class="body-copy">Bangalore-based interior design studio crafting intentional homes and thoughtful architectural spaces across India.</p>
+          <div class="hero-actions">
+            <button class="button button-solid" type="button" data-scroll="contact">START A PROJECT <span>↘</span></button>
+            <button class="button button-outline" type="button" data-scroll="projects">BOOK A CONSULTATION</button>
+          </div>
+        </div>
+        <div class="hero-photo reveal">
+          <img src="https://kalpravah-ali.vercel.app/product/p4.jpg" alt="An elegant warm interior" />
+          <div class="feature-chip">
+            <div><span>FEATURED SPACE</span><b>01</b></div>
+            <strong>The Earth House</strong>
+            <small>Residential Architecture · Lucknow</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio section-grid" id="studio">
+        <div class="studio-images reveal">
+          <img class="studio-main" src="https://kalpravah-ali.vercel.app/product/p1-1.jpg" alt="Kapravah living space" />
+          <img class="studio-detail" src="https://kalpravah-ali.vercel.app/product/p1-2.jpg" alt="Kapravah material details" />
+        </div>
+        <div class="studio-copy reveal">
+          <p class="section-kicker"><i></i> THE STUDIO PHILOSOPHY</p>
+          <h2>Intentional Homes.<br /><em>Intentional Living.</em></h2>
+          <p>Kapravah is an online-based interior design studio creating intentional homes where design supports everyday living, functionality meets beauty, and every detail has a reason.</p>
+          <p>We believe a home should not simply be decorated, but thoughtfully curated to reflect the people who inhabit it, balancing tactile natural materials, natural sunlight, and quiet architectural harmony.</p>
+          <span class="studio-meta"><i></i> BANGALORE-BASED · PAN INDIA <b>Est. 2021</b></span>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker">KAPRAVAH ARCHITECTURAL PORTFOLIO</p>
+            <h2>Selected Works.</h2>
+          </div>
+          <p>Intentional residences and commercial spaces crafted across Bangalore &amp; Pan India.</p>
+        </div>
+        <div class="filters reveal" role="group" aria-label="Filter selected works">
+          <button class="active" type="button" data-filter="all">ALL</button>
+          <button type="button" data-filter="residential">RESIDENTIAL INTERIOR</button>
+          <button type="button" data-filter="contemporary">CONTEMPORARY RESIDENCE</button>
+          <button type="button" data-filter="commercial">COMMERCIAL INTERIOR</button>
+          <button type="button" data-filter="architecture">RESIDENTIAL ARCHITECTURE</button>
+        </div>
+        <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="portfolio" aria-label="Portfolio carousel">
+        <div class="portfolio-title reveal">
+          <h2>Portfolio</h2>
+          <p>The space you deserve has never been built before.</p>
+        </div>
+        <div class="carousel reveal">
+          <button class="carousel-arrow prev" type="button" aria-label="Previous photo">‹</button>
+          <div class="carousel-stage" id="carousel-stage"></div>
+          <button class="carousel-arrow next" type="button" aria-label="Next photo">›</button>
+        </div>
+        <div class="portfolio-copy reveal">
+          <p>We design private residences and commercial spaces from a blank page. No templates,<br class="desktop-break" /> no repeated floorplans, no shortcuts.</p>
+          <div><button type="button" data-scroll="contact">Start a Project</button><button type="button" data-scroll="projects">See All Works <span>→</span></button></div>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="services-intro reveal">
+          <p class="section-kicker">OUR PRACTICES</p>
+          <h2>Design Practices &amp;<br /><em>Interior Solutions.</em></h2>
+          <p>From complete residential interior architecture to online design consultations across India, we create intentional spaces shaped around your daily rituals.</p>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+      </section>
+
+      <section class="principles">
+        <div class="principles-head reveal">
+          <p class="section-kicker">OUR CORE PRINCIPLES</p>
+          <h2>Why Kapravah.</h2>
+          <p>We adhere to four core tenets that elevate interior design from standard decoration into architectural intentional living.</p>
+        </div>
+        <div class="principle-list" id="principle-list"></div>
+        <div class="stats reveal">
+          <div><b>10+</b><span>INTENTIONAL HOMES DESIGNED</span><p>Bespoke Residences &amp; Workplaces Across India</p></div>
+          <div><b>5+</b><span>YEARS OF PRACTICE</span><p>Mastering Architectural Craft &amp; Spatial Design</p></div>
+          <div><b>100%</b><span>ATTENTION TO DETAIL</span><p>Precision in Every Joint, Light &amp; Texture</p></div>
+          <div><b>1</b><span>CORE PHILOSOPHY</span><p>Intentional Homes Promoting Intentional Living</p></div>
+        </div>
+      </section>
+
+      <section class="contact section-grid" id="contact">
+        <div class="contact-copy reveal">
+          <p class="section-kicker">INITIATE A CONVERSATION</p>
+          <h2>Let's Create<br /><em>Something Meaningful.</em></h2>
+          <p>Tell us about your space, your vision and the life you want it to hold.</p>
+          <div class="contact-actions"><button class="button button-solid" type="button" data-placeholder="project enquiry">START A PROJECT <span>↘</span></button><a href="#home">INSTAGRAM <span>↗</span></a></div>
+        </div>
+        <div class="contact-image reveal"><img src="https://kalpravah-ali.vercel.app/product/p4.jpg" alt="Kapravah architectural room" /></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#home"><span class="brand-mark"><img src="https://kalpravah-ali.vercel.app/logo-cream-transparent.png" alt="" /></span><span><strong>Kapravah</strong><small>INTERIOR DESIGN STUDIO</small></span></a>
+          <p>Intentional homes promoting intentional living. Based in Bangalore · Designing Across India</p>
+          <a href="tel:+910000000000">+91 00000 00000</a>
+          <a href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="footer-nav"><p>STUDIO NAVIGATION</p><a href="#home">Home</a><a href="#studio">About</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
+        <div class="footer-social"><p>SOCIAL CONNECTION</p><a href="#contact">@KALPRAVAH.STUDIO</a><button type="button" data-scroll="home">Back to Top <span>↑</span></button></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Kapravah Interior Design Studio. All rights reserved.</span><span>Lucknow · Saharanpur · Bangalore · Pan India</span></div>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite">This is a placeholder for the enquiry integration.</div>
+    <script src="script.js"></script>
+  </body>
+</html>
