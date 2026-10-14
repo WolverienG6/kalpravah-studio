@@ -50,99 +50,57 @@ const principles = [
 
 const projectsGrid = document.querySelector("#projects-grid");
 function renderProjects(filter = "all") {
+  if (!projectsGrid) return;
   const filtered = filter === "all" ? projects : projects.filter((project) => project.category === filter);
   projectsGrid.innerHTML = filtered.map((project) => `
     <article class="project-card">
-      <div class="project-image">
-        <img src="${project.image}" alt="${project.title}" />
-        <span class="project-number">${project.number} ${project.location} · ${project.year}</span>
-      </div>
-      <p class="project-type">${project.type} ${project.year}</p>
-      <h3>${project.title}</h3>
+      <div class="project-image"><img src="${project.image}" alt="${project.title}" /><span class="project-number">${project.number} ${project.location} · ${project.year}</span></div>
+      <p class="project-type">${project.type} ${project.year}</p><h3>${project.title}</h3>
       <p>${project.description}<br /><span>${project.photos} · View Case Study →</span></p>
-    </article>
-  `).join("");
+    </article>`).join("");
 }
 
-document.querySelector("#services-grid").innerHTML = services.map((service, index) => `
-  <article class="service-card reveal">
-    <img src="${image(service.image)}" alt="${service.title}" />
-    <div class="service-body">
-      <span class="service-num">0${index + 1}</span>
-      <h3>${service.title}</h3>
-      <p>${service.description}</p>
-      <div class="service-tags">${service.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
-      <button type="button" data-placeholder="${service.title} enquiry">ENQUIRE FOR THIS PRACTICE</button>
-    </div>
-  </article>
-`).join("");
+const servicesGrid = document.querySelector("#services-grid");
+if (servicesGrid) servicesGrid.innerHTML = services.map((service, index) => `
+  <article class="service-card reveal"><img src="${image(service.image)}" alt="${service.title}" /><div class="service-body"><span class="service-num">0${index + 1}</span><h3>${service.title}</h3><p>${service.description}</p><div class="service-tags">${service.tags.map((tag) => `<span>${tag}</span>`).join("")}</div><button type="button" data-placeholder="${service.title} enquiry">ENQUIRE FOR THIS PRACTICE</button></div></article>`).join("");
 
-document.querySelector("#principle-list").innerHTML = principles.map((item, index) => `
-  <article class="principle reveal">
-    <span>${item[0]}</span><h3>${item[1]}</h3><p>${item[2]}</p><span>P. ${String(index + 1).padStart(2, "0")}</span>
-  </article>
-`).join("");
+const principleList = document.querySelector("#principle-list");
+if (principleList) principleList.innerHTML = principles.map((item, index) => `<article class="principle reveal"><span>${item[0]}</span><h3>${item[1]}</h3><p>${item[2]}</p><span>P. ${String(index + 1).padStart(2, "0")}</span></article>`).join("");
 
 let currentSlide = 2;
 const stage = document.querySelector("#carousel-stage");
 function renderSlides() {
+  if (!stage) return;
   stage.innerHTML = slides.map((slide, index) => {
     const total = slides.length;
     const diff = (index - currentSlide + total) % total;
     const relative = diff > total / 2 ? diff - total : diff;
     const position = relative === 0 ? "active" : relative === -1 ? "side-left" : relative === 1 ? "side-right" : relative === -2 ? "far-left" : relative === 2 ? "far-right" : "hidden";
-    return `<article class="slide ${position}" aria-hidden="${position !== "active"}">
-      <img src="${image(slide.image)}" alt="${slide.title}" />
-      <div class="slide-caption"><span>${slide.type} · VIEW CASE STUDY →</span><h3>${slide.title}</h3></div>
-    </article>`;
+    return `<article class="slide ${position}" aria-hidden="${position !== "active"}"><img src="${image(slide.image)}" alt="${slide.title}" /><div class="slide-caption"><span>${slide.type} · VIEW CASE STUDY →</span><h3>${slide.title}</h3></div></article>`;
   }).join("");
 }
 
-document.querySelectorAll(".filters button").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelector(".filters .active").classList.remove("active");
-    button.classList.add("active");
-    renderProjects(button.dataset.filter);
-  });
-});
-
-document.querySelector(".prev").addEventListener("click", () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlides(); });
-document.querySelector(".next").addEventListener("click", () => { currentSlide = (currentSlide + 1) % slides.length; renderSlides(); });
+document.querySelectorAll(".filters button").forEach((button) => button.addEventListener("click", () => {
+  document.querySelector(".filters .active")?.classList.remove("active"); button.classList.add("active"); renderProjects(button.dataset.filter);
+}));
+document.querySelector(".prev")?.addEventListener("click", () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlides(); });
+document.querySelector(".next")?.addEventListener("click", () => { currentSlide = (currentSlide + 1) % slides.length; renderSlides(); });
 
 const menu = document.querySelector(".mobile-menu");
 const menuToggle = document.querySelector(".menu-toggle");
-function setMenu(open) {
-  menu.classList.toggle("open", open);
-  document.body.classList.toggle("menu-open", open);
-  menu.setAttribute("aria-hidden", String(!open));
-  menuToggle.setAttribute("aria-expanded", String(open));
-}
-menuToggle.addEventListener("click", () => setMenu(true));
-document.querySelector(".menu-close").addEventListener("click", () => setMenu(false));
+function setMenu(open) { if (!menu || !menuToggle) return; menu.classList.toggle("open", open); document.body.classList.toggle("menu-open", open); menu.setAttribute("aria-hidden", String(!open)); menuToggle.setAttribute("aria-expanded", String(open)); }
+menuToggle?.addEventListener("click", () => setMenu(true));
+document.querySelector(".menu-close")?.addEventListener("click", () => setMenu(false));
 document.querySelectorAll("[data-close-menu]").forEach((el) => el.addEventListener("click", () => setMenu(false)));
-
 function scrollToId(id) { document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }); }
 document.querySelectorAll("[data-scroll]").forEach((button) => button.addEventListener("click", () => scrollToId(button.dataset.scroll)));
 
 let toastTimer;
-function showToast(message = "This is a placeholder for the enquiry integration.") {
-  const toast = document.querySelector(".toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-  window.clearTimeout(toastTimer);
-  toastTimer = window.setTimeout(() => toast.classList.remove("show"), 3200);
-}
-document.addEventListener("click", (event) => {
-  const trigger = event.target.closest("[data-placeholder]");
-  if (trigger) showToast(`${trigger.dataset.placeholder} is ready for your integration.`);
-});
-
-const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-  if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
-}), { threshold: 0.08 });
+function showToast(message = "This is a placeholder for the enquiry integration.") { const toast = document.querySelector(".toast"); if (!toast) return; toast.textContent = message; toast.classList.add("show"); window.clearTimeout(toastTimer); toastTimer = window.setTimeout(() => toast.classList.remove("show"), 3200); }
+document.addEventListener("click", (event) => { const trigger = event.target.closest("[data-placeholder]"); if (trigger && trigger.tagName !== "FORM") showToast(`${trigger.dataset.placeholder} is ready for your integration.`); });
+document.querySelector(".enquiry-form")?.addEventListener("submit", (event) => { event.preventDefault(); showToast("Project enquiry is ready for your email or form integration."); });
+const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } }), { threshold: 0.08 });
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
 window.addEventListener("keydown", (event) => { if (event.key === "Escape") setMenu(false); });
-renderProjects();
-renderSlides();
-window.setTimeout(() => document.querySelector(".intro-screen").classList.add("is-gone"), 1200);
+renderProjects(); renderSlides();
+window.setTimeout(() => document.querySelector(".intro-screen")?.classList.add("is-gone"), 1200);

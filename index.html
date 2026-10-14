@@ -36,12 +36,12 @@
       </a>
       <nav class="desktop-nav" aria-label="Main navigation">
         <a class="active" href="#home">HOME</a>
-        <a href="#studio">ABOUT</a>
-        <a href="#projects">PROJECTS</a>
-        <a href="#services">SERVICES</a>
-        <a href="#contact">CONTACT</a>
+        <a href="about/">ABOUT</a>
+        <a href="projects/">PROJECTS</a>
+        <a href="services/">SERVICES</a>
+        <a href="contact/">CONTACT</a>
       </nav>
-      <button class="header-cta desktop-cta" type="button" data-scroll="contact">START A PROJECT <span>↗</span></button>
+      <a class="header-cta desktop-cta" href="contact/">START A PROJECT <span>↗</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span><i>Menu</i></button>
     </header>
 
@@ -51,17 +51,17 @@
           <span class="brand-mark"><img src="https://kalpravah-ali.vercel.app/logo-cream-transparent.png" alt="" /></span>
           <span><strong>Kapravah</strong><small>INTERIOR DESIGN STUDIO</small></span>
         </a>
-        <button class="drawer-cta" type="button" data-scroll="contact" data-close-menu>START A PROJECT <span>↗</span></button>
+        <a class="drawer-cta" href="contact/" data-close-menu>START A PROJECT <span>↗</span></a>
         <button class="menu-close" type="button" aria-label="Close navigation menu">×</button>
       </div>
       <nav aria-label="Mobile navigation">
         <a href="#home" data-close-menu>HOME</a>
-        <a href="#studio" data-close-menu>ABOUT</a>
-        <a href="#projects" data-close-menu>PROJECTS</a>
-        <a href="#services" data-close-menu>SERVICES</a>
-        <a href="#contact" data-close-menu>CONTACT</a>
+        <a href="about/" data-close-menu>ABOUT</a>
+        <a href="projects/" data-close-menu>PROJECTS</a>
+        <a href="services/" data-close-menu>SERVICES</a>
+        <a href="contact/" data-close-menu>CONTACT</a>
       </nav>
-      <button class="mobile-project" type="button" data-scroll="contact" data-close-menu>START A PROJECT</button>
+      <a class="mobile-project" href="contact/" data-close-menu>START A PROJECT</a>
     </aside>
 
     <main>
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="hero-photo reveal">
-          <img src="https://kalpravah-ali.vercel.app/product/p4.jpg" alt="An elegant warm interior" />
+          <div class="hero-image-mask"><img src="https://kalpravah-ali.vercel.app/product/p4.jpg" alt="An elegant warm interior" /></div>
           <div class="feature-chip">
             <div><span>FEATURED SPACE</span><b>01</b></div>
             <strong>The Earth House</strong>
@@ -87,7 +87,7 @@
 
       <section class="studio section-grid" id="studio">
         <div class="studio-images reveal">
-          <img class="studio-main" src="https://kalpravah-ali.vercel.app/product/p1-1.jpg" alt="Kapravah living space" />
+          <div class="studio-main-wrap"><img class="studio-main" src="https://kalpravah-ali.vercel.app/product/p1-1.jpg" alt="Kapravah living space" /></div>
           <img class="studio-detail" src="https://kalpravah-ali.vercel.app/product/p1-2.jpg" alt="Kapravah material details" />
         </div>
         <div class="studio-copy reveal">
@@ -176,8 +176,8 @@
           <a href="tel:+910000000000">+91 00000 00000</a>
           <a href="mailto:hello@example.com">hello@example.com</a>
         </div>
-        <div class="footer-nav"><p>STUDIO NAVIGATION</p><a href="#home">Home</a><a href="#studio">About</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
-        <div class="footer-social"><p>SOCIAL CONNECTION</p><a href="#contact">@KALPRAVAH.STUDIO</a><button type="button" data-scroll="home">Back to Top <span>↑</span></button></div>
+        <div class="footer-nav"><p>STUDIO NAVIGATION</p><a href="./">Home</a><a href="about/">About</a><a href="projects/">Projects</a><a href="services/">Services</a><a href="contact/">Contact</a></div>
+        <div class="footer-social"><p>SOCIAL CONNECTION</p><a href="contact/">@KALPRAVAH.STUDIO</a><button type="button" data-scroll="home">Back to Top <span>↑</span></button></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Kapravah Interior Design Studio. All rights reserved.</span><span>Lucknow · Saharanpur · Bangalore · Pan India</span></div>
     </footer>
