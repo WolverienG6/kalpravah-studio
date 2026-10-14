@@ -99,8 +99,18 @@ let toastTimer;
 function showToast(message = "This is a placeholder for the enquiry integration.") { const toast = document.querySelector(".toast"); if (!toast) return; toast.textContent = message; toast.classList.add("show"); window.clearTimeout(toastTimer); toastTimer = window.setTimeout(() => toast.classList.remove("show"), 3200); }
 document.addEventListener("click", (event) => { const trigger = event.target.closest("[data-placeholder]"); if (trigger && trigger.tagName !== "FORM") showToast(`${trigger.dataset.placeholder} is ready for your integration.`); });
 document.querySelector(".enquiry-form")?.addEventListener("submit", (event) => { event.preventDefault(); showToast("Project enquiry is ready for your email or form integration."); });
-const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } }), { threshold: 0.08 });
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+let observer = null;
+if ("IntersectionObserver" in window) {
+  observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  }), { threshold: 0.08 });
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
+}
 window.addEventListener("keydown", (event) => { if (event.key === "Escape") setMenu(false); });
 renderProjects(); renderSlides();
 window.setTimeout(() => document.querySelector(".intro-screen")?.classList.add("is-gone"), 1200);

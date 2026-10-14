@@ -431,3 +431,11 @@ footer .brand small { color: rgba(237,228,216,.6); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* Inner-page fail-safe: keep page content readable if scroll-reveal
+   JavaScript does not initialize. */
+.inner-page .reveal {
+  opacity: 1;
+  transform: none;
+}
