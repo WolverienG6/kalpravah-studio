@@ -34,6 +34,12 @@ const services = [
   { image: "p5-1.jpg", title: "Turnkey Design & Execution", description: "End-to-end design management from spatial concept and material selection to final styling and move-in execution.", tags: ["Spatial Planning", "Custom Joinery", "Lighting Architecture", "Curated Furnishing & Art"] }
 ];
 
+const servicePagePractices = [
+  { image: "p2-1.jpg", title: "Residential Interior Design", description: "Bespoke home interiors shaped around your lifestyle, aesthetic preferences, and everyday rituals.", tags: ["Lifestyle-led homes", "Personal aesthetics", "Everyday rituals", "Enduring comfort"] },
+  { image: "p1-1.jpg", title: "Space Mapping & Planning", description: "Thoughtful spatial layouts informed by sunlight, ventilation, movement, storage, and how you use your home.", tags: ["Natural sunlight", "Ventilation", "Considered movement", "Useful storage"] },
+  { image: "p2-4.jpg", title: "Interior Styling & Decor", description: "A considered blend of furnishings, art, textiles, plants, and handcrafted details that bring warmth and character to your space.", tags: ["Furnishings & art", "Textiles", "Plants", "Handcrafted details"] }
+];
+
 const slides = [
   { image: "p4.jpg", type: "CONTEMPORARY RESIDENCE", title: "Aura Penthouse", slug: "aura-penthouse" },
   { image: "p1-1.jpg", type: "RESIDENTIAL ARCHITECTURE", title: "The Earth House", slug: "earth-house" },
@@ -95,11 +101,41 @@ if (caseStudyHost) {
       <section class="case-detail-gallery"><p class="section-kicker">PHOTOGRAPHY PORTFOLIO</p><div class="case-detail-gallery-title"><h2>Spatial Collage &amp; Details.</h2><span>${project.gallery.length} High-Resolution Photographs</span></div><div class="case-detail-images">${project.gallery.slice(1).map((photo, index) => `<img src="${image(photo)}" alt="${project.title} spatial detail ${index + 1}" loading="lazy" />`).join("")}</div></section>
       <section class="case-detail-next"><div><p class="section-kicker">NEXT CASE STUDY</p><h2>${next.title}</h2><p>${next.type} • ${next.location}</p></div><div class="case-detail-next-actions"><a href="../${next.slug}/">EXPLORE NEXT PROJECT →</a><a href="../">BACK TO ALL PROJECTS</a></div></section>`;
   }
+  document.body.insertAdjacentHTML("beforeend", `<footer><div class="footer-top"><div class="footer-brand"><a class="brand" href="../../"><span class="brand-mark"><img src="https://kalpravah-ali.vercel.app/logo-cream-transparent.png" alt="" /></span><span><strong>Kalpravah</strong><small>INTERIOR DESIGN STUDIO</small></span></a><p>Intentional homes promoting intentional living.</p><div class="footer-contact-list"><span class="footer-location">Based in Bangalore · Designing Across India</span><span class="footer-phone">+91 00000 00000</span><span class="footer-email">hello@example.com</span></div></div><div class="footer-nav"><p>STUDIO NAVIGATION</p><nav class="footer-nav-links" aria-label="Footer navigation"><a href="../../">Home</a><a href="../../about/">About</a><a href="../" aria-current="page">Projects</a><a href="../../services/">Services</a><a href="../../contact/">Contact</a></nav></div><div class="footer-social"><p>SOCIAL CONNECTION</p><a href="https://www.instagram.com/kalpravah.studio/" target="_blank" rel="noopener noreferrer">@KALPRAVAH.STUDIO</a><button type="button" data-scroll="case-detail-content">Back to Top <span>↑</span></button></div></div><div class="footer-bottom"><span>© 2026 Kalpravah Interior Design Studio. All rights reserved.</span></div></footer>`);
 }
 
 const servicesGrid = document.querySelector("#services-grid");
-if (servicesGrid) servicesGrid.innerHTML = services.map((service, index) => `
-  <article class="service-card reveal"><img src="${image(service.image)}" alt="${service.title}" /><div class="service-body"><span class="service-num">0${index + 1}</span><h3>${service.title}</h3><p>${service.description}</p><div class="service-tags">${service.tags.map((tag) => `<span>${tag}</span>`).join("")}</div><button type="button" data-placeholder="${service.title} enquiry">ENQUIRE FOR THIS PRACTICE</button></div></article>`).join("");
+if (servicesGrid) {
+  const onServicesPage = document.body.classList.contains("services-page");
+  servicesGrid.innerHTML = (onServicesPage ? servicePagePractices : services).map((service, index) => onServicesPage ? `
+    <article class="service-card reveal"><div class="service-card-image"><img src="${image(service.image)}" alt="${service.title}" /><span class="service-num">0${index + 1}</span></div><div class="service-body"><h3>${service.title}</h3><p>${service.description}</p><div class="service-tags">${service.tags.map((tag) => `<span>${tag}</span>`).join("")}</div><button type="button" data-open-project>ENQUIRE FOR THIS PRACTICE</button></div></article>` : `
+    <article class="service-card reveal"><img src="${image(service.image)}" alt="${service.title}" /><div class="service-body"><span class="service-num">0${index + 1}</span><h3>${service.title}</h3><p>${service.description}</p><div class="service-tags">${service.tags.map((tag) => `<span>${tag}</span>`).join("")}</div><button type="button" data-placeholder="${service.title} enquiry">ENQUIRE FOR THIS PRACTICE</button></div></article>`).join("");
+}
+
+const methodologySteps = [
+  { title: "Discovery & Intent", summary: "Understanding your lifestyle, spatial needs, and aspirations.", detail: "We begin with a conversation about how you live, what you love, and what your home needs to support." },
+  { title: "Space Mapping", summary: "Studying light, ventilation, movement, and daily routines.", detail: "We map the existing space and explore layouts that make movement, storage, sunlight, and ventilation work naturally together." },
+  { title: "Design & Materials", summary: "Bringing layouts, finishes, and crafted details together.", detail: "Design concepts, drawings, and material choices turn the spatial plan into a cohesive home with a distinct character." },
+  { title: "Execution & Build", summary: "Coordinating the work with care and precision.", detail: "Once the design is finalised, we plan the handover and coordinate execution according to the location and scope of your project." },
+  { title: "Reveal & Living", summary: "Completing a home that feels distinctly yours.", detail: "The final styling and finishing details bring warmth to the space, ready for the everyday moments it was designed around." }
+];
+document.querySelectorAll("[data-service-step]").forEach((button) => button.addEventListener("click", () => {
+  const index = Number(button.dataset.serviceStep);
+  const step = methodologySteps[index];
+  if (!step) return;
+  document.querySelectorAll("[data-service-step]").forEach((item) => {
+    const active = item === button;
+    item.classList.toggle("is-active", active);
+    item.setAttribute("aria-pressed", String(active));
+  });
+  document.querySelector("#methodology-number").textContent = String(index + 1).padStart(2, "0");
+  document.querySelector("#methodology-phase").textContent = `PHASE ${index + 1} OF ${methodologySteps.length}`;
+  document.querySelector("#methodology-name").textContent = step.title;
+  document.querySelector("#methodology-summary").textContent = step.summary;
+  document.querySelector("#methodology-description").textContent = step.detail;
+  document.querySelector("#methodology-count").textContent = `Step ${index + 1} / ${methodologySteps.length}`;
+  document.querySelectorAll("#methodology-dots span").forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === index));
+}));
 
 const principleList = document.querySelector("#principle-list");
 if (principleList) principleList.innerHTML = principles.map((item, index) => `<article class="principle reveal"><span>${item[0]}</span><h3>${item[1]}</h3><p>${item[2]}</p><span>P. ${String(index + 1).padStart(2, "0")}</span></article>`).join("");
@@ -157,7 +193,13 @@ function setMenu(open) { if (!menu || !menuToggle) return; menu.classList.toggle
 menuToggle?.addEventListener("click", () => setMenu(true));
 document.querySelector(".menu-close")?.addEventListener("click", () => setMenu(false));
 document.querySelectorAll("[data-close-menu]").forEach((el) => el.addEventListener("click", () => setMenu(false)));
-function scrollToId(id) { document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }); }
+function scrollToId(id) {
+  if (id === "home" || id === "case-detail-content") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 document.querySelectorAll("[data-scroll]").forEach((button) => button.addEventListener("click", () => scrollToId(button.dataset.scroll)));
 
 function projectFormMarkup(prefix) {
