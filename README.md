@@ -1,4 +1,4 @@
-# Kapravah Studio recreation
+# Kalpravah Studio recreation
 
 A standalone, responsive static recreation of the supplied interior-studio reference.
 
